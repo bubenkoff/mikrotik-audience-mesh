@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(# Перевіряю fingerprint host ключа Main напряму ssh-keyscan -t rsa 192.168.88.1)",
+      "Bash(ssh-keygen:*)",
+      "Bash(for:*)",
+      "Bash(do)",
+      "Bash(echo:*)",
+      "Bash(done)",
+      "Bash(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s)",
+      "Bash(system_profiler:*)",
+      "Bash(sudo wdutil:*)",
+      "Bash(networksetup -getairportnetwork:*)",
+      "Bash(networksetup -listallhardwareports:*)",
+      "Bash(# Спробую через airport з sudo sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s)",
+      "Bash(# Пробую отримати повну інфу про мережі defaults read /Library/Preferences/SystemConfiguration/com.apple.airport.preferences)",
+      "Bash(python3 -c \"\nimport objc\nfrom CoreWLAN import CWInterface, CWNetwork\n\ninterface = CWInterface.interface\\(\\)\nnetworks, error = interface.scanForNetworksWithName_error_\\(''Ferraristraat11'', None\\)\nif networks:\n    for n in networks:\n        print\\(f''{n.ssid\\(\\)} | BSSID: {n.bssid\\(\\)} | Channel: {n.wlanChannel\\(\\).channelNumber\\(\\)} | Signal: {n.rssiValue\\(\\)} dBm''\\)\nelse:\n    print\\(''No networks found or error:'', error\\)\n\")",
+      "Bash(log show:*)",
+      "Bash(/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport:*)",
+      "Bash(ioreg:*)",
+      "Bash(chmod:*)",
+      "Bash(sudo /Users/bubenkoff/projects/mikrotik/wifi-scan.sh:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git branch:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: MikroTik Audience mesh documentation\n\n- Topology: Main + 2 repeaters in daisy chain with WiFi backup\n- CAPsMAN configuration with band steering \\(10 dB difference\\)\n- Mesh failover scripts with centralized deployment via SFTP\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "mcp__github__create_repository",
+      "Bash(gh repo create:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd scan results output to file\n\n- wifi-scan.sh now saves results to wifi-scan-results.txt\n- Added .gitignore for scan results\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
