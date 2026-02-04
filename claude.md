@@ -23,24 +23,15 @@ RouterOS version: 7.21.2
 ### Channels
 | Name | Frequency | Band | Width | TX Power |
 |------|-----------|------|-------|----------|
-| 2hz | 2412 (ch1) | 2ghz-g/n | 40MHz (Ce) | 14 dBm |
-| 5hz | 5180 (ch36) | 5ghz-n/ac | 80MHz (Ceee) | 20 dBm |
+| 2hz | 2412 (ch1) | 2ghz-g/n | 40MHz (Ce) | 17 dBm |
+| 5hz | 5180 (ch36) | 5ghz-n/ac | 80MHz (Ceee) | 23 dBm |
 
-### Band Steering
-Access list threshold difference: **5 dB** (5GHz: -85, 2.4GHz: -80)
-
-Як працює:
-- 5GHz приймає клієнтів з сигналом > -85 dBm
-- 2.4GHz приймає клієнтів з сигналом > -80 dBm
-- Пристрої з хорошим сигналом йдуть на 5GHz
-
-### Access List (band steering rules)
+### Access List
 ```
-0-2: interface=5ghz-ac-* signal-range=-85..120 action=accept (5GHz пріоритет)
-3-5: interface=2ghz-* signal-range=-80..120 action=accept (2.4GHz fallback)
-6: action=reject (weak signal)
+0: signal-range=-120..-76 allow-signal-out-of-range=10s action=reject
 ```
-5GHz має перевагу 5 dB (-85 vs -80) для кращого band steering.
+Single rule: reject clients with signal weaker than -75 dBm on any interface.
+Default action (accept) handles everything else. Band steering is client-side.
 
 ## Mesh Failover
 
@@ -135,6 +126,6 @@ sudo ./wifi-scan.sh
 
 | Parameter | Value |
 |-----------|-------|
-| 5GHz TX | 20 dBm |
-| 2.4GHz TX | 14 dBm |
+| 5GHz TX | 23 dBm |
+| 2.4GHz TX | 17 dBm |
 | Difference | ~6 dB |
