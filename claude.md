@@ -23,8 +23,8 @@ RouterOS version: 7.21.2
 ### Channels
 | Name | Frequency | Band | Width | TX Power |
 |------|-----------|------|-------|----------|
-| 2hz | 2412 (ch1) | 2ghz-g/n | 40MHz (Ce) | 17 dBm |
-| 5hz | 5180 (ch36) | 5ghz-n/ac | 80MHz (Ceee) | 23 dBm |
+| 2hz | 2412 (ch1) | 2ghz-g/n | 40MHz (Ce) | 14 dBm |
+| 5hz | 5180 (ch36) | 5ghz-n/ac | 80MHz (Ceee) | 20 dBm |
 
 ### Band Steering
 Signal difference: **~6 dB** (5GHz stronger)
@@ -135,6 +135,6 @@ sudo ./wifi-scan.sh
 
 | Parameter | Value |
 |-----------|-------|
-| 5GHz TX | 23 dBm |
-| 2.4GHz TX | 17 dBm |
+| 5GHz TX | 20 dBm |
+| 2.4GHz TX | 14 dBm |
 | Difference | ~6 dB |
