@@ -23,15 +23,15 @@ RouterOS version: 7.21.2
 ### Channels
 | Name | Frequency | Band | Width | TX Power |
 |------|-----------|------|-------|----------|
-| 2hz | 2412 (ch1) | 2ghz-g/n | 40MHz (Ce) | 17 dBm |
-| 5hz | 5180 (ch36) | 5ghz-n/ac | 80MHz (Ceee) | 23 dBm |
+| 2hz | 2412 (ch1) | 2ghz-g/n | 40MHz (Ce) | 8 dBm |
+| 5hz | 5180 (ch36) | 5ghz-n/ac | 80MHz (Ceee) | 25 dBm |
 
 ### Access List
 ```
-0: signal-range=-120..-76 allow-signal-out-of-range=10s action=reject
+0: signal-range=-120..-81 allow-signal-out-of-range=10s action=reject
 ```
-Single rule: reject clients with signal weaker than -75 dBm on any interface.
-Default action (accept) handles everything else. Band steering is client-side.
+Single rule: reject clients with signal weaker than -80 dBm on any interface.
+Default action (accept) handles everything else. Band steering via power difference (5GHz 17 dB stronger).
 
 ## Mesh Failover
 
@@ -126,6 +126,6 @@ sudo ./wifi-scan.sh
 
 | Parameter | Value |
 |-----------|-------|
-| 5GHz TX | 23 dBm |
-| 2.4GHz TX | 17 dBm |
-| Difference | ~6 dB |
+| 5GHz TX | 25 dBm |
+| 2.4GHz TX | 8 dBm |
+| Difference | 17 dB |
