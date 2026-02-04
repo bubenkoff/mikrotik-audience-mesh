@@ -27,20 +27,20 @@ RouterOS version: 7.21.2
 | 5hz | 5180 (ch36) | 5ghz-n/ac | 80MHz (Ceee) | 20 dBm |
 
 ### Band Steering
-Signal difference: **~6 dB** (5GHz stronger)
+Access list threshold difference: **5 dB** (5GHz: -85, 2.4GHz: -80)
 
-Recommended range: 6-10 dB
-- < 5 dB: weak band steering
-- 6-10 dB: optimal
-- > 15 dB: risk for IoT devices
+Як працює:
+- 5GHz приймає клієнтів з сигналом > -85 dBm
+- 2.4GHz приймає клієнтів з сигналом > -80 dBm
+- Пристрої з хорошим сигналом йдуть на 5GHz
 
 ### Access List (band steering rules)
 ```
-0: interface=*5ghz* signal-range=-80..120 action=accept
-1-3: (similar for each 5GHz interface)
-4: interface=*2ghz* signal-range=-75..120 action=accept (fallback)
-5: signal-range=-120..-75 action=reject (weak signal)
+0-2: interface=5ghz-ac-* signal-range=-85..120 action=accept (5GHz пріоритет)
+3-5: interface=2ghz-* signal-range=-80..120 action=accept (2.4GHz fallback)
+6: action=reject (weak signal)
 ```
+5GHz має перевагу 5 dB (-85 vs -80) для кращого band steering.
 
 ## Mesh Failover
 
